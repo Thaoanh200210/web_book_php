@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "./partial/header.twig" with {
+    "title": "Trả sách",
+    "css" : 
+        [
+            "/css/style.css",
+            "/css/table.css",
+            "https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css",
+        ],
+} %}
+<body>
+{% include "./partial/nav.twig" with {"user": user, "active": 5} %}
+
+<div class="container">
+            <h1 class="text-center header">Trả sách</h1>
+
+        <table id="returnBook" class="mb-5" style="width:100%">
+            <thead>
+                <tr>
+                    <th class="text-center"><i class="fa-solid fa-user"></i> Tài khoản</th>
+                    <th class="text-center"><i class="fa-solid fa-book"></i> Sách</th>
+                    <th class="text-center"><i class="fa-solid fa-calendar-day"></i>     Ngày mượn</th>
+                    <th class="text-center"><i class="fa-solid fa-calendar-check"></i> Ngày trả</th>
+                    <th class="text-center"><i class="fa-sharp fa-solid fa-check-to-slot"></i> Xác nhận trả</th>
+                </tr>
+            </thead>
+            {% for borrow in borrows %}
+                {% for book in borrow.books %}
+                <tr>
+                    <td>{{ borrow.username }}</td>
+                    <td>{{ book.bookName }}</td>
+                    <td>{{ book.borrowAt }}</td>
+                    <td>{{ book.borrowEnd }}</td>
+                    <td class="d-flex justify-content-center">
+                            <a  class="btn btn-primary" href="/returnbook/{{ borrow.username }}/{{ book.bookId }}">
+                                Trả sách
+                                <i class="fa-solid fa-check"></i>
+                            </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% endfor %}
+        </table>
+    </div>
+
+ {% include "./partial/footer.twig" %}   
+</body>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+             $('#returnBook').DataTable();
+        });
+    </script>
+</html>

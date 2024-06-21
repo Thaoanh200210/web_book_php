@@ -1,0 +1,63 @@
+.filter{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 4px;
+    padding: 0 12px;
+    align-items: center;
+    justify-content:space-between;
+    align-content: space-between;
+}
+
+.filter-list{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    flex: 3;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.filter button{
+    background-color: black;
+    outline: none;
+    border: none;
+    color: white;
+}
+
+.filter button:hover{
+    color: white !important;
+    background-color: rgb(56, 50, 50);
+}
+
+.filter-item{
+    padding: 12px;
+}
+
+.filter-search{
+    flex: 1;
+    margin-bottom: 0 !important;
+}
+
+.filter-search input{
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0) 0px 18px 36px -18px inset; */
+    box-shadow: rgb(204, 219, 232) 3px -3px 4px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 0px inset;
+    border: 0px;
+    color: black;
+}
+
+.filter-search-input:focus{
+    border: 1px solid black;
+
+}
+
+.btn:focus, .form-control:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.dropdown-menu {
+    max-height: 200px;
+    overflow-y: scroll;
+}

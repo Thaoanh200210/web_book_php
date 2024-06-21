@@ -1,0 +1,140 @@
+*{
+    box-sizing: border-box;
+    outline: none !important;
+}
+
+body{
+    background-color: black;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer{ 
+    margin-top: auto;
+    border-top: 1px solid rgb(155, 155, 155);
+    padding-top: 12px;
+    color: black;
+    background-color: white;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.btn:hover{
+    color: #c3c3c3;
+}
+
+.p-16{
+    padding: 16px;
+}
+
+.bg-white{
+    background-color: white;
+}
+
+.btn:focus{
+    outline: none;
+    border: none;
+    box-shadow:none;
+}
+
+/* Form */
+form.user-form{
+    min-width: 350px;
+    max-width: 550px;
+    width: 100%;
+}
+
+/* nav */
+.navbar{
+    padding: 0;
+}
+
+.nav-item{
+    /* padding: 0.3rem 0; */
+    min-width: 86px;
+}
+
+.nav-link{
+    padding: 12px 8px;
+    text-align: center;
+}
+
+.nav-link.active{
+    background-color: black;
+    color: white!important;
+}
+
+.nav-link-expand::after{
+    content: "";
+    width: 100%;
+    height: 20px;
+    position: absolute;
+    background-color: transparent;
+    left: 0;
+    bottom: -10px;
+}
+
+.dropdown-expand:after{
+    content: "";
+    width: 100%;
+    height: 12px;
+    position: absolute;
+    background-color: transparent;
+    left: 0px;
+    bottom: -12px;
+}
+
+.nav-item:hover{
+    /* border: 1px solid black; */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px -50px 36px -28px inset;
+}
+
+
+.nav-item.dropdown{
+    margin-left: auto;
+}
+
+.dropdown-menu{
+    margin-top: 3px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.dropdown-menu li a{
+    padding: 8px;
+}
+
+.dropdown-menu::-webkit-scrollbar{
+    width: 10px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb{
+    background-color: white;
+}
+
+.dropdown-menu::-webkit-scrollbar-track{
+    background-color: #696969;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.dropdown:hover + .dropdown-menu,
+.nav-item .nav-link:hover + .dropdown-menu,
+.dropdown-menu:hover{
+    display: block !important;
+}
+
+.success{
+    color: #198754;
+}
+
+.fail{
+    color: red;
+}

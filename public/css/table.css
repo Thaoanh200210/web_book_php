@@ -1,0 +1,25 @@
+.container {
+    margin-top: 70px;
+}
+
+.header{
+    background-color: white;
+    color: black;
+    width: fit-content;
+    margin: 0 auto 16px;
+    padding: 12px;
+    border-radius: 3px;
+}
+
+#borrow_wrapper,
+#bookTable_wrapper,
+#returnBook_wrapper,
+#userTable_wrapper{
+    background-color: white;
+    padding: 12px 18px;
+    border-radius: 3px;
+}
+
+table{
+    background-color: white;
+}

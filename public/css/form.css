@@ -1,0 +1,40 @@
+form{
+    margin: 16px auto 0;
+    background-color: white;
+    width: 75%;
+}
+
+.header{
+    background-color: white;
+    color: black;
+    width: fit-content;
+    margin: 0 auto 8px;
+    padding: 12px;
+    border-radius: 3px;
+}
+
+.message{
+    background-color: white;
+    border-radius: 3px;
+    padding: 12px 0;
+    width: 50%;
+    margin: 0 auto  ;
+    font-size: 20px;
+    border: 1px solid red;
+    position: relative;
+}
+
+.message.success{
+    border: 1px solid #198754;
+}
+
+.close-button{
+    position: absolute;
+    right: 1px;
+    top: 2px;
+    cursor: pointer;
+}
+
+input{
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}

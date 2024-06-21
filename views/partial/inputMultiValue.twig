@@ -1,0 +1,19 @@
+<div class="row {{value}}-contain">
+    {% if data == null %}
+        <div class="col {{value}}-box position-relative" style="padding-right: 0">
+                <input name="{{value}}-1" id="{{value}}" type="text" class="input-multi form-control" data-number="1" >
+        </div>
+    {% endif %}
+    
+    {% for item in  data %}       
+        <div class="col {{value}}-box position-relative" style="padding-right: 0">
+            <input name="{{value}}-{{loop.index}}" id="{{value}}" type="text" class="form-control input-multi" data-number="{{loop.index}}" value="{{item}}">
+        </div>
+    {% endfor %}
+	<div class="col p-0">
+		<button class="btn add-{{value}}" style="padding: 6px 12px;">
+			<i class="fa-solid fa-plus"></i>
+		</button>
+    </div>
+    <script src="/js/inputMulti/{{value}}.js"></script>
+</div>

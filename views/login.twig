@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% 
+		include "./partial/header.twig" with 
+		{
+			"title": "Đăng Nhập",
+			"css": [
+				"/css/form.css"
+			]
+		} 
+	%}
+	<body style="position: relative">
+		{% include "/partial/headerPage.twig" %}
+
+		{% include "/partial/userForm.twig" with {"action": "/login","message": message, "name": "Đăng Nhập"} %}
+
+		{% include 'partial/footer.twig' %}
+
+	</body>
+		<script src="/js/jquery.validate.js"></script>
+		<script src="/js/validate.js"></script>
+</html>

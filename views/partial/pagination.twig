@@ -1,0 +1,30 @@
+{% if pageNumber != 0 %}
+	<div class="pagination">
+		<div class="page-list d-flex flex-row m-auto align-items-center justify-content-center">
+			{% if currentpage != 0 %}
+				<a href="/{% if urlPath != " " %}{{urlPath}}{% endif %}
+					{{ (currentpage - 1) * limit }}
+				">
+					<i class="fa-solid fa-angle-left arrow-left"></i>
+				</a>
+			{% endif %}
+			{% for i in 0..(pageNumber-1) %}
+				<div class="page-number
+					    {% if  currentpage == i %}
+						    active-page
+					    {% endif %}">
+					<a href="/{% if urlPath != " " %}{{urlPath}}{% endif %}{{(i * limit)}}">
+						{{ i+1 }}
+					</a>
+				</div>
+			{% endfor %}
+			{% if currentpage != pageNumber - 1 %}
+				<a href="/{% if urlPath != " " %}{{urlPath}}{% endif %}
+					{{ (currentpage + 1) * limit }}">
+					<i class="fa-solid fa-angle-right arrow-right"></i>
+				</a>
+			{% endif %}
+
+		</div>
+	</div>
+{% endif %}

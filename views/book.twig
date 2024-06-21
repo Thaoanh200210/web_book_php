@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% 
+    include "./partial/header.twig" with 
+    {"title": "Trang chủ",
+      "css" : 
+            [
+                "/css/filter.css",
+				"/css/book.css",
+				"/src/fontawesome-free-6.3.0-web/css/all.min.css"
+            ]
+    } 
+%}
+	<body>
+		{% include "./partial/nav.twig" with {'user': user, "active": 1} %}
+		<div class="container" style="margin-top: 80px;">
+			<div class="filter">
+				<ul class="filter-list">
+					<li class="filter-item dropdown">
+						<button class="btn dropdown dropdown-expand position-relative" type="button" id="dropdownTypeButton" data-bs-toggle="dropdown" aria-expanded="false">Thể loại</button>
+						<ul class="dropdown-menu mt-2" aria-labelledby="dropdownTypeButton">
+							{% for type in types %}
+								<li><a href="/filter/type/{{ type.type }}" class="dropdown-item">{{ type.type }}</a></li>
+							{% endfor %}
+						</ul>
+					</li>
+					<li class="filter-item">
+						<button class="btn dropdown dropdown-expand position-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false">Tác giả</button>
+						<ul class="dropdown-menu mt-2">
+							{% for author in authors %}
+								<li><a href="/filter/author/{{ author.name }}" class="dropdown-item ">{{ author.name }}</a></li>
+							{% endfor %}
+						</ul>	
+					</li>
+				</ul>
+
+					<form action="/search" method="GET" class="filter-search input-group mb-3">
+						<input type="text" class="form-control filter-search-input" placeholder="Nhập tên sách..." aria-label="Nhập tên sách..." aria-describedby="button-addon2" name="search">
+					<button class="btn filter-search-button" type="submit" id="button-addon2">Tìm kiếm</button>
+					</form>
+			</div>
+			{% if message == "" %}
+				<div class="book-list">
+					{% for book in books %}
+						{% if (loop.index == 1) %}
+							<div class="row  g-3">
+						{% endif %}
+
+							<div class="col col-sm-6 col-xl-3">
+								<div class=" text-center book-item shadow-lg">
+									<div class="img-cover">
+										<img src="/{{book.src}}" alt="">
+									</div>
+									<div class="about mb-1">
+										<div class="about-main">
+											<h4 class="about-name">{{ book.name }}</h4>
+											<span class="about-author">{{ book.author }} </span>
+										</div>
+										<div class="about-sub d-flex flex-rơw justify-content-around">
+												<span class="d-block about-type" style="margin-bottom: auto;">
+													{{ book.type }} 
+												</span>
+											<span class="d-block about-quantity">Còn: {{ book.quantity }}</span>
+										</div>
+									</div>
+									{% if user != "thuthu" %}
+									<button class="btn btn-borrow w-100" data-link='/borrow/{{ book.id }}' data-bs-toggle="modal" data-bs-target="#messageModal" {% if book.quantity == 0 %}disabled{% endif %} >
+										Mượn
+									</button>
+									{% endif %}
+								</div>
+							</div>
+
+						{% if (loop.index is divisible by(4)) or (loop.index == books|length) %}
+							</div>
+							{% if loop.index != books|length %}
+								<div class="row  g-3">
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+				</div>
+				{% include "./partial/pagination.twig" with 
+				{
+					"currentpage": currentpage,
+					"pageNumber": pageNumber,
+					"urlPath": urlPath,
+					"limit": limit
+				} %}
+			
+			{% else %}
+			<div class='message'><i class="fa-solid fa-rectangle-xmark"></i> {{ message }}</div>
+			{% endif %}
+			
+
+		</div>
+		<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="messageModalLabel"></h5>
+					<span class=" btn btn-close" data-bs-dismiss="modal" aria-label="Close">
+					</span>
+				</div>
+				<div class="modal-body fs-3">
+				</div>
+				</div>
+			</div>
+		</div>
+		{% include "./partial/footer.twig" %}
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+	<script>
+		modalTitle = $('.modal-title');
+		modalBody = $('.modal-body');
+		modalContent = $('.modal-content');
+
+		$('.btn-borrow').each(function(index) {
+			var login = false;
+			$( this ).click(function(e) {
+				$.get($( this ).attr('data-link'), function(data) {
+					if(data == 'success'){
+						modalContent.removeClass("fail").addClass("success");
+						modalTitle.text("Mượn sách thành công");
+						modalBody.text("Hãy đến thư viện để lấy sách");
+					}
+					else if(data == 'borrowed') {
+						modalContent.remove("success").addClass("fail");
+						modalTitle.text("Mượn sách thất bại");
+						modalBody.text("Bạn đang mượn sách này");
+					}
+					else if(data = "unlogin") {
+						modalContent.remove("success").addClass("fail");
+						modalTitle.text("Mượn sách thất bại");
+						modalBody.text("Bạn chưa đăng nhập");
+					}
+				})
+			})
+		})
+
+		$(".btn-close").click(()=> location.reload());
+	</script>
+</html>

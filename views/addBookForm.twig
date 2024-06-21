@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "./partial/header.twig" with {"title": "Thêm sách", "css" :["/css/form.css"]} %}
+<body>
+{% include "./partial/nav.twig" with {"user": user, "active": 4} %}
+
+<div class="container" style="margin-top: 80px;">
+    <h1 class='text-center header'>Thêm sách </h1>
+    {% if message != "" %}
+        <div class="message text-center {% if success == true %}success{% else %}fail{% endif %}">
+            <i class="fa-sharp fa-solid fa-circle-xmark close-button"></i>
+            {{ message }}
+        </div>
+        <script>
+            $(".close-button").click(function() {
+                $(".message").hide()
+            })
+        </script>
+    {% endif %}
+    
+    {% include "/partial/bookForm.twig" with {"action": "/addbook"}%}
+
+</div>
+
+{% include "./partial/footer.twig" %}
+</body>
+<script src="/js/jquery.validate.js"></script>
+<script src="/js/bookFormValidate.js"></script>
+<script>
+    $("#image").rules("add", {
+        required: true,
+        messages: {
+            required: "Hình ảnh không được để trống"
+        }
+    })
+</script>
+</html>

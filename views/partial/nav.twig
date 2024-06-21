@@ -1,0 +1,52 @@
+<nav class="navbar-expand-lg navbar navbar-light bg-white fixed-top shadow  ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">VABook</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav d-flex flex-row">
+        <li class="nav-item">
+          <a class="nav-link {% if active == 1 %}active{% endif %}" aria-current="page" href="/">Trang chủ</a>
+        </li>
+        {% if user != "" %}
+          {% if user == 'thuthu' %}
+              <li class="nav-item">
+                <a class="nav-link {% if active == 4 %}active{% endif %}" aria-current="page" href="/addbook">Thêm sách</a>
+              </li>     
+              <li class="nav-item">
+                <a class="nav-link {% if active == 5 %}active{% endif %}" aria-current="page" href="/returnbook">Trả sách</a>
+              </li>  
+              <li class="nav-item">
+                <a class="nav-link {% if active == 6 %}active{% endif %}" aria-current="page" href="/booktable">Sách</a>
+              </li>  
+              <li class="nav-item">
+                <a class="nav-link {% if active == 7 %}active{% endif %}" aria-current="page" href="/userTable">Người dùng</a>
+              </li> 
+          {% else %}
+              <li class="nav-item">
+                <a class="nav-link {% if active == 2 %}active{% endif %}" aria-current="page" href="/borrow">Sách đã mượn</a>
+              </li>        
+          {% endif %}       
+        <li class="nav-item dropdown ">
+          <div class="nav-link nav-link-expand {% if active == 3 %}active{% endif %}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-user mr-2"></i>
+              {{ user }}
+          </div>
+          <ul class="dropdown-menu hide-scrollbar shadow" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item"  href="/changepass">Đổi mật khẩu</a></li>
+              <li><a class="dropdown-item" href="/logout">Đăng xuất</a></li>
+          </ul>
+        </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/login">Đăng nhập</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/signup">Đăng ký</a>
+          </li>
+        {% endif %}        
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% 
+		include "./partial/header.twig" with 
+		{
+			"title": "Đổi Mật Khẩu",
+		 	"css": [
+				"/css/form.css"
+			]
+		} 
+	%}
+	<body style= "position: relative">
+		{% include 'partial/nav.twig' with  {'user': user, "active": 3}%}
+		<div class="container d-flex flex-column" style="margin-top: 130px; ">
+			<div class="rounded m-auto p-2" style="background-color: white; width: fit-content">
+				<h1 class="text-center header">
+					Đổi Mật Khẩu
+				</h1>
+
+			{% if message != "" %}
+				<div class="message text-center " >
+						<span class="fs-5" style="color:red">
+							<i class="fa-sharp fa-solid fa-circle-xmark close-button"></i>
+							{{message}}
+						</span>
+				</div>
+				<script>
+					$(".close-button").click(function() {
+						$(".message").hide()
+					})
+				</script>
+			{% endif %}
+			<form action="/changepass" method="POST" id="formChangePassword" class="d-flex flex-column p-2 rounded" style="width: 350px; margin: 0 auto;">
+				<div class="m-1 mb-4">
+					<label class="form-label bold fs-5" for="password">Mật khẩu cũ:</label>
+					<input id="password" class="rounded form-control p-2" type="password" name="password" value="" placeholder="Nhập mật khẩu cũ">
+				</div>
+				<div class="m-1 mb-4">
+					<label class="form-label fs-5" for="password_new">Mật khẩu mới:</label>
+					<input id="password_new" class=" rounded form-control p-2" type="password" name="password_new" value="" placeholder="Nhập mật khẩu mới">
+				</div>
+				<div class="align-self-end">
+					<button id="submitButton" type="submit" class="btn btn-primary">Đổi mật khẩu</button>
+					<button type="reset" class="btn btn-secondary">Hủy</button>
+				</div>
+			</form>
+			</div>
+		</div>
+
+		{% include 'partial/footer.twig' %}
+
+	</body>
+			<script src="/js/jquery.validate.js"></script>
+			<script src="/js/validate.js"></script>
+</html>

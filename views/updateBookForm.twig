@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "./partial/header.twig" with {"title": "Cập nhật sách", "css" :["/css/form.css"]} %}
+<body>
+{% include "./partial/nav.twig" with {"user": user, "active": 6} %}
+
+<div class="container" style="margin-top: 80px">
+    <h1 class='header text-center'> Cập nhật sách </h1>
+    {% if message != "" %}
+        <div class="text-center fs-2 {% if success == true %}success{% else %}fail{% endif %}">
+            {{ message }}
+        </div>
+    {% endif %}
+
+    {% include "/partial/bookForm.twig" with 
+        {
+            "action": "/updatebook/" ~ book.id,
+            "book": book,
+            "notrequiredImg": true
+        }
+    %}
+    
+
+</div>
+
+{% include "./partial/footer.twig" %}
+</body>
+<script src="/js/jquery.validate.js"></script>
+<script src="/js/bookFormValidate.js"></script>
+</html>

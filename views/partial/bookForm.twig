@@ -1,0 +1,52 @@
+  <form action="{{action}}" method="POST" class="rounded p-2 mb-5" enctype="multipart/form-data">
+        <div class="row m-1 g-3 align-items-center">
+            <div class="col-2">
+                <label for="inputName" class="form-label fs-5">Tên sách:</label>
+            </div>
+            <div class="col">
+                <input name="name" id="name" type="text" class="form-control" id="inputName" value="{{book.name}}">
+            </div>
+        </div>
+        <div class="row m-1 g-3 align-items-center">
+            <div class="col-2">
+                <label for="inputAuthor" class="form-label fs-5">Tác giả:</label>
+            </div>
+             <div class="col">
+                    {% include "/partial/inputMultiValue.twig" with {"value": "author", "data": book.author} %}
+            </div>
+        </div>
+        <div class="row m-1 g-3 align-items-center">
+            <div class="col-2">
+                <label for="inputType" class="form-label fs-5">Thể loại:</label>
+            </div>
+            <div class="col">
+                {% include "/partial/inputMultiValue.twig" with {"value": "type", "data": book.type} %}
+            </div>
+        </div>
+        <div class="row m-1 g-3 align-items-center">
+            <div class="col-2">
+                <label for="inputQuantity" class="form-label fs-5">Số lượng:</label>
+            </div>
+            <div class="col">
+                <input name="quantity" id="quantity" type="number" class="form-control" id="inputQuantity" value="{{book.quantity}}">
+            </div>
+        </div>
+        <div class="row m-1 g-3 align-items-center">
+            <div class="col-2">
+                <label for="inputQuantity" class="form-label fs-5">Hình ảnh:</label>
+            </div>
+            <div class="col">
+                <input type="file" class="form-control" name="image" id="image">
+            </div>
+        </div>
+        <div class="row m-1 m-1 g-3 align-items-center  justify-content-end">
+            <div class="col-1">
+                <button type="submit" id="submitButton" class="btn btn-primary">
+                        Lưu
+                </button>
+            </div>
+            <div class="col-1">
+                <button type="reset" class="btn btn-dark">Hủy</button>
+            </div>
+        </div>
+    </form>

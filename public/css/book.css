@@ -1,0 +1,163 @@
+.row {
+    margin: 32px auto 0;
+}
+
+.book-list{
+    margin-bottom: 16px;
+}
+
+.book-item{
+    max-height: 530px;
+    /* border: 1px solid rgb(65, 65, 65); */
+    background-color: white;
+    border-radius: 4px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.book-item .about {
+    margin-top: auto;
+}
+
+.img-cover{
+    /* border-bottom: 1px solid rgb(65, 65, 65); */
+    /* margin-bottom: 8px ; */
+}
+
+.book-item .img-cover img {
+    max-width: 270px;
+    height: 330px;
+    margin-bottom: 8px;
+    padding: 0 -16px;
+}
+
+.book-item h4{
+    font-size: 20px;
+}
+
+.about-sub,
+.about-main{
+    margin-bottom: 8px;
+}
+
+
+.about-name{
+    margin-bottom: 2px;
+}
+
+.about-author{
+    font-size: 16px;
+}
+
+
+.btn-borrow{
+    background-color: black;
+    color: white;
+}
+
+.message {
+    text-align: center;
+    font-size: 18px;
+    color: #E54141;
+    background-color: white;
+    padding: 12px;
+    border-radius: 3px;
+    width: 25%;
+    margin: 80px auto 0;
+}
+
+/* Pagination */
+.pagination {
+    color: white;
+    margin: 22px 0;
+    font-size: 24px;
+}
+
+.active-page{
+    font-style: bold;
+    font-weight: 700;
+}
+
+.page-number a{
+    color: white;
+    padding: 12px;
+    text-decoration-line: none;
+    position: relative;
+}
+
+.active-page a{
+    border: 1px solid rgb(255, 255, 255) !important;
+    border-radius: 3px;
+    background-color: white;
+    color: black;
+}
+
+.page-number{
+    padding: 12px;
+}
+
+
+.page-number a:hover{
+    padding: 16px;
+    background-color: white;
+    color: black;
+    animation: zoomBorder 0.3s ease;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
+@keyframes zoomBorder {
+    from {
+        padding: 12px;
+        /* top: 0; */
+    }
+    to {
+        /* top: -5px; */
+        padding: 16px
+    }
+}
+
+.arrow-left {
+    color: white;
+    position: relative;
+    padding: 10px;
+    margin-right: 16px;
+}
+.arrow-right{
+    color: white;
+    position: relative;
+    padding: 10px;
+    margin-left: 16px;
+}
+
+.arrow-left:hover {
+    left: -10px;
+    animation: moveLeft 0.3s ease;
+}
+
+.arrow-right:hover{
+    right: -10px;
+    animation: moveRight 0.3s ease;
+}
+
+@keyframes moveLeft {
+    from {
+        left: 0;
+    }
+    to{
+        left: -10px;
+    }
+}
+
+@keyframes moveRight {
+    from {
+        right: 0;
+    }
+    to{
+        right: -10px;
+    }
+}
+
+.modal-dialog{
+    margin-top: 170px;
+}
